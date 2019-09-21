@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import com.cu_bx.assignment.view.main.MainController;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
@@ -32,7 +34,7 @@ public class Preferences {
 		nDaysWithoutFine = 14;
 		finePerDay = 2;
 		username = "admin";
-		password = "admin";
+		setPassword("admin");
 	}
 
 	public int getnDaysWithoutFine() {
@@ -64,7 +66,7 @@ public class Preferences {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = DigestUtils.shaHex(password);
 	}
 
 	public static void writePreferencesToFile(Preferences preferences) {
