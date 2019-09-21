@@ -269,7 +269,7 @@ public class MainController implements Initializable {
 			alert.setX(mStage.getX() + mStage.getWidth() / 2 - 225);
 			alert.setY(mStage.getY());
 			alert.showAndWait();
-
+			// Commet
 			return;
 		}
 
