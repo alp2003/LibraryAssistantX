@@ -1,7 +1,6 @@
 package com.cu_bx.assignment;
 
 import com.cu_bx.assignment.database.DatabaseHandler;
-import com.cu_bx.assignment.view.main.MainController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,12 +16,11 @@ public class MainApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/main/Main.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("view/login/Login.fxml"));
 		Parent rootParent = fxmlLoader.load();
 		Scene scene = new Scene(rootParent);
-		primaryStage.setTitle("Library Assistant X");
+		primaryStage.setTitle("Library Assistant Login");
 		primaryStage.setScene(scene);
-		((MainController) fxmlLoader.getController()).setStage(primaryStage);
 		primaryStage.show();
 
 		new Thread(() -> DatabaseHandler.getInstance()).start();

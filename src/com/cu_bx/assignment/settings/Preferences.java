@@ -66,7 +66,10 @@ public class Preferences {
 	}
 
 	public void setPassword(String password) {
-		this.password = DigestUtils.shaHex(password);
+		if (password.length() < 16) {
+			this.password = DigestUtils.shaHex(password);
+		}
+
 	}
 
 	public static void writePreferencesToFile(Preferences preferences) {
