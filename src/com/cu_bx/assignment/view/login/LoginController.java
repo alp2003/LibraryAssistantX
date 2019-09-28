@@ -10,6 +10,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import com.cu_bx.assignment.settings.Preferences;
 import com.cu_bx.assignment.view.main.MainController;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
@@ -20,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
@@ -33,11 +35,18 @@ public class LoginController implements Initializable {
 	@FXML
 	private Label titleLabel;
 
+	@FXML
+	private JFXButton btnCancel;
+
+	@FXML
+	private MenuItem itemM;
+
 	Preferences preferences;
 
 	@FXML
 	void handleCancel(ActionEvent event) {
 		((Stage) username.getScene().getWindow()).close();
+
 	}
 
 	@FXML
@@ -59,6 +68,7 @@ public class LoginController implements Initializable {
 
 	private void closeStage() {
 		((Stage) username.getScene().getWindow()).close();
+
 	}
 
 	@Override
