@@ -30,6 +30,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
@@ -39,6 +40,10 @@ public class MainController implements Initializable {
 
 	private DatabaseHandler databaseHandler;
 	private Stage mStage;
+
+	@FXML
+	private StackPane rootPane;
+
 	@FXML
 	private HBox book_info;
 
@@ -204,7 +209,10 @@ public class MainController implements Initializable {
 		try {
 			Parent parent = FXMLLoader.load(getClass().getResource(location));
 			Stage stage = new Stage();
+			// stage.initStyle(StageStyle.UTILITY);
 			stage.initModality(Modality.APPLICATION_MODAL);
+			// stage.alwaysOnTopProperty();
+			stage.initOwner(mStage);
 			stage.setTitle(title);
 			stage.setScene(new Scene(parent));
 			stage.show();
@@ -332,6 +340,37 @@ public class MainController implements Initializable {
 		alert.setHeaderText(header);
 		alert.setContentText(content);
 		return alert;
+	}
+
+	@FXML
+	void handleMenuClose(ActionEvent event) {
+		((Stage) rootPane.getScene().getWindow()).close();
+	}
+
+	@FXML
+	void handleMenuAddBook(ActionEvent event) {
+		loadWindow("/com/cu_bx/assignment/view/addbook/AddBook.fxml", "Add New Book");
+	}
+
+	@FXML
+	void handleMenuAddMember(ActionEvent event) {
+		loadWindow("/com/cu_bx/assignment/view/addmember/AddMember.fxml", "Add New Member");
+	}
+
+	@FXML
+	void handleMenuViewBooks(ActionEvent event) {
+		loadWindow("/com/cu_bx/assignment/view/booklist/BookList.fxml", "Book List");
+	}
+
+	@FXML
+	void handleMenuViewMembers(ActionEvent event) {
+		loadWindow("/com/cu_bx/assignment/view/memberlist/MemberList.fxml", "Member List");
+	}
+
+	@FXML
+	void handleMenuFullScreen(ActionEvent event) {
+		Stage stage = ((Stage) rootPane.getScene().getWindow());
+		stage.setFullScreen(!stage.isFullScreen());
 	}
 
 }
